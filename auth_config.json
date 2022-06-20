@@ -1,0 +1,24 @@
+{
+    "roles": {
+        "Musician Agency": {
+            "description": "Can view, edit and delete any information of musicians, also can create profile of a new musicians",
+            "jwt_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkhLamhZMXlYOGM0S2dRSHR1MUgzMSJ9.eyJpc3MiOiJodHRwczovL2Rldi1kYzdpOXF1MC51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjI5ZjNjOTc2Mzg5ZGUwMDY5M2M3ZGQ5IiwiYXVkIjoiZGl2ZW11c2ljIiwiaWF0IjoxNjU1NTM1NDQwLCJleHAiOjE2NTU1NDI2NDAsImF6cCI6IjZUc3BtajBGUHlkd3pRb0FuSTY2WmRpb3FTZ09vSmNGIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6bXVzaWNpYW5zIiwiZ2V0Om11c2ljaWFucyIsInBhdGNoOm11c2ljaWFucyIsInBvc3Q6bXVzaWNpYW5zIl19.f1x2HVJAhC3zNQVuDklPOMSr0AfKfD1MaY0cX0weSX1A2r1wqUCmjxuQlO-_U4bnECWgDWI5R8t0zOVJnlS3g9wcf_iRQjy6UVAImjwEI8bDR7ica-TNi8S9lhSh5s3oB2IEMFSViIIuI6JVBoi3BsyNXjUGj4-u5gAjhuY9cDPQboxOA0Rlzx1HYOk05gON1ET6Hb5_DRAP5ybncUXcColwCuVnXAhjE2SRMveYoZs8TGei70TSE3vBmUs1qnZEWRTInOtntLHVhIei_f-EjL6ZB4s8wfmp2YNJQlM2RHgFINxqYzZ9gsbV3OEPc-FeRzNTIv_UaopefR80Zki9SA",
+            "permissions": ["get:musicians", "patch:musicians", "delete:musicians", "post:musicians"]
+        },
+        "Song Producer": {
+            "description": "Can only view infomation of musicians, but can get all permissiona accessed to all the songs",
+            "jwt_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkhLamhZMXlYOGM0S2dRSHR1MUgzMSJ9.eyJpc3MiOiJodHRwczovL2Rldi1kYzdpOXF1MC51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjJhZDdiZjRmMzNmNmQ5NzQ2MDZlZmQzIiwiYXVkIjoiZGl2ZW11c2ljIiwiaWF0IjoxNjU1NTM2ODQwLCJleHAiOjE2NTU1NDQwNDAsImF6cCI6IjZUc3BtajBGUHlkd3pRb0FuSTY2WmRpb3FTZ09vSmNGIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6c29uZ3MiLCJnZXQ6bXVzaWNpYW5zIiwiZ2V0OnNvbmdzIiwicGF0Y2g6c29uZ3MiLCJwb3N0OnNvbmdzIl19.jEa28kEHEsOtDOkstHjsSFWzrn6nU7_Rzg0cj7yHLBKyv8p1RmuoDKlI2k3Oj04hw_aFcuVb-moVRtvZ-Bua_3tqIZCYw-UP1MOJiq5dILZSeAS-J8K8ubcXNkOgIYuV2TPs_T3k2jaYUnZ-Hm2ua4IjWg61z8AhstG6nQ1IZKwZRziBLoIRQ0EZjw7Pwi_X-VHBdh8XvcQYnvPxjwMu9I-PmsHSf3NZHqihj07cjcgFCWBbMNWiQxtTQg6z3zgShRgXOgNLme6FnFicDPWmrBWCuCBYuKKjtKzQJirNpprEacsZCfNSnCei9oJc7sO_fhy7iU4JqeJ0bfmjxNWuhw",
+            "permissions": ["get:musicians", "get:songs", "patch:songs", "delete:songs", "post:songs"]
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
