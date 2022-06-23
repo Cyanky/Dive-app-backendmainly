@@ -198,3 +198,80 @@ The API will return three error types when requests fail:
 - 404: Resource Not Found
 - 422: Not Processable
 
+### Endpoints
+
+*** All can be successfully checked in Postman
+
+#### GET /musician
+
+- Get all musicians
+
+- Require `get:musicians` permission
+
+- **Example Request:** `curl 'http://localhost:5000/musicians'`
+
+- **Expected Result:**
+
+  ```
+  {
+      "musicians": [
+          {
+              "avatar_link": "sjdklfjwioeuro",
+              "e_mail": "1234@ss.com",
+              "genres": "R&B",
+              "id": 1,
+              "introduction": "sdf",
+              "name": "Cyanky",
+              "phone": "123",
+              "songs": [
+                  {
+                      "cover_link": "pzxlkcjlvawef",
+                      "genre": null,
+                      "id": 1,
+                      "introduction": "ererere",
+                      "musician_id": 1,
+                      "name": "DIVE",
+                      "song_link": "https://open.spotify.com/track/5w4q9Es264UdYYr2AjnPhU?si=988d1cf25bf24d05"
+                  }
+              ],
+              "website": "http://22.com"
+          }
+      ],
+      "success": true,
+      "total_musicians": 1
+  }
+  ```
+
+  #### GET /musician/musician_id
+
+  - Get specific musician with unique musician id
+  - Require `get:musicians` permission
+  - **Example Request:** `curl 'http://localhost:5000/musicians/1'`
+  - **Expected Result:**
+  ```  
+  {
+    "musicians": {
+        "avatar_link": "sjdklfjwioeuro",
+        "e_mail": "1234@ss.com",
+        "genres": "R&B",
+        "id": 1,
+        "introduction": "sdf",
+        "name": "Cyanky",
+        "phone": "123",
+        "songs": [
+            {
+                "cover_link": "pzxlkcjlvawef",
+                "genre": null,
+                "id": 1,
+                "introduction": "ererere",
+                "musician_id": 1,
+                "name": "DIVE",
+                "song_link": "https://open.spotify.com/track/5w4q9Es264UdYYr2AjnPhU?si=988d1cf25bf24d05"
+            }
+        ],
+        "website": "http://22.com"
+    },
+    "success": true
+}  
+
+```
