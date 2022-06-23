@@ -200,6 +200,16 @@ The API will return three error types when requests fail:
 
 ### Endpoints
 
+*** Postman is recommended to be used to check these endpoints
+
+#### GET /musician
+
+- Get all musicians
+
+- Require `get:musicians` permission
+
+### Endpoints
+
 *** All can be successfully checked in Postman
 
 #### GET /musician
@@ -242,36 +252,309 @@ The API will return three error types when requests fail:
   }
   ```
 
-  #### GET /musician/musician_id
+#### GET /musician/int:musician_id
 
-  - Get specific musician with unique musician id
-  - Require `get:musicians` permission
-  - **Example Request:** `curl 'http://localhost:5000/musicians/1'`
-  - **Expected Result:**
-  ```  
+- Get specific musician with unique musician id
+
+- Require `get:musicians` permission
+
+- **Example Request:** `curl 'http://localhost:5000/musicians/1'`
+
+- **Expected Result:**
+
+  ```
   {
-    "musicians": {
-        "avatar_link": "sjdklfjwioeuro",
-        "e_mail": "1234@ss.com",
-        "genres": "R&B",
-        "id": 1,
-        "introduction": "sdf",
-        "name": "Cyanky",
-        "phone": "123",
-        "songs": [
-            {
-                "cover_link": "pzxlkcjlvawef",
-                "genre": null,
-                "id": 1,
-                "introduction": "ererere",
-                "musician_id": 1,
-                "name": "DIVE",
-                "song_link": "https://open.spotify.com/track/5w4q9Es264UdYYr2AjnPhU?si=988d1cf25bf24d05"
-            }
-        ],
-        "website": "http://22.com"
-    },
-    "success": true
-}  
+      "musicians": {
+          "avatar_link": "sjdklfjwioeuro",
+          "e_mail": "1234@ss.com",
+          "genres": "R&B",
+          "id": 1,
+          "introduction": "sdf",
+          "name": "Cyanky",
+          "phone": "123",
+          "songs": [
+              {
+                  "cover_link": "pzxlkcjlvawef",
+                  "genre": null,
+                  "id": 1,
+                  "introduction": "ererere",
+                  "musician_id": 1,
+                  "name": "DIVE",
+                  "song_link": "https://open.spotify.com/track/5w4q9Es264UdYYr2AjnPhU?si=988d1cf25bf24d05"
+              }
+          ],
+          "website": "http://22.com"
+      },
+      "success": true
+  }
+  ```
+
+#### GET /songs
+
+- Get all song
+- Requires `get:songs` permission
+- **Expected Result:**
 
 ```
+{
+    "songs": [
+        {
+            "cover_link": "pzxlkcjlvawef",
+            "genre": null,
+            "id": 1,
+            "introduction": "ererere",
+            "musician_id": 1,
+            "name": "DIVE",
+            "song_link": "https://open.spotify.com/track/5w4q9Es264UdYYr2AjnPhU?si=988d1cf25bf24d05"
+        }
+    ],
+    "success": true,
+    "total_songs": 1
+}
+```
+
+#### POST /musicians
+
+- Creates a new musician.
+
+- Requires `post:musicians` permission
+
+- Requires the name.
+
+- **Example JSON Body:** 
+
+  ```
+  {
+              "name": "Jingchen Xie",
+              "e_mail": "qpoweiru@sdhfl.com",
+              "phone": "3849302908",
+              "website": "https://cyanky.github.io/",
+              "introduction": "She's coming now!",
+              "avatar_link": "jskldfjoeuojsfdjkl",
+              "genres": "R&B"
+  }
+  ```
+
+- **Example Response:**
+
+  ```
+  {
+      "created": 2,
+      "musicians": [
+          {
+              "avatar_link": "sjdklfjwioeuro",
+              "e_mail": "1234@ss.com",
+              "genres": "R&B",
+              "id": 1,
+              "introduction": "sdf",
+              "name": "Cyanky",
+              "phone": "123",
+              "songs": [
+                  {
+                      "cover_link": "pzxlkcjlvawef",
+                      "genre": null,
+                      "id": 1,
+                      "introduction": "ererere",
+                      "musician_id": 1,
+                      "name": "DIVE",
+                      "song_link": "https://open.spotify.com/track/5w4q9Es264UdYYr2AjnPhU?si=988d1cf25bf24d05"
+                  }
+              ],
+              "website": "http://22.com"
+          },
+          {
+              "avatar_link": "jskldfjoeuojsfdjkl",
+              "e_mail": "qpoweiru@sdhfl.com",
+              "genres": "R&B",
+              "id": 2,
+              "introduction": "She's coming now!",
+              "name": "Jingchen Xie",
+              "phone": "3849302908",
+              "songs": [],
+              "website": "https://cyanky.github.io/"
+          }
+      ],
+      "success": true,
+      "total_musicians": 2
+  }
+  ```
+
+#### POST /songs
+
+- Creates a new song.
+- Requires `post:songs` permission
+- Requires the name and the song link. ** check the musician id to assign the song to an existing musician. 
+- **Example JSON Body:** 
+
+```
+{
+            "name": "Get up",
+            "introduction": "to the top",
+            "cover_link": "woeiruojwl",
+            "song_link": "https://cyanky.github.io/",
+            "genre": "R&B",
+            "musician_id": 10
+}
+```
+
+- **Example Response:**
+
+```
+{
+    "created": 3,
+    "songs": [
+        {
+            "cover_link": "pzxlkcjlvawef",
+            "genre": null,
+            "id": 1,
+            "introduction": "ererere",
+            "musician_id": 1,
+            "name": "DIVE",
+            "song_link": "https://open.spotify.com/track/5w4q9Es264UdYYr2AjnPhU?si=988d1cf25bf24d05"
+        }
+    ],
+    "success": true,
+    "total_songs": 2
+}
+```
+
+#### PATCH /musicians/int:musicians_id
+
+- Edit an existing musician.
+
+- Requires `patch:musicians` permission
+
+- **Example JSON Body:** 
+
+  ```
+  {
+              "e_mail": "werpiop@sser.com"
+  }
+  ```
+
+- **Example Response:** 
+
+  ```
+  {
+      "success": true,
+      "updated": {
+          "avatar_link": "jskldfjoeuojsfdjkl",
+          "e_mail": "werpiop@sser.com",
+          "genres": "R&B",
+          "id": 2,
+          "introduction": "She's coming now!",
+          "name": "Jingchen Xie",
+          "phone": "3849302908",
+          "songs": [],
+          "website": "https://cyanky.github.io/"
+      }
+  }
+  ```
+
+#### PATCH /songs/int:songs_id
+
+- Edit an existing song.
+- Requires `patch:songs` permission
+- **Example JSON Body:** 
+
+```
+{
+            "name": "Get up",
+            "introduction": "to the top",
+            "cover_link": "woeiruojwl",
+            "song_link": "https://cyanky.github.io/",
+            "genre": "R&B",
+            "musician_id": 2
+        }
+```
+
+- **Example Response:** 
+
+```
+{
+    "success": true,
+    "updated": {
+        "cover_link": "woeiruojwl",
+        "genre": "R&B",
+        "id": 3,
+        "introduction": "to the top",
+        "musician_id": 2,
+        "name": "Get up",
+        "song_link": "https://cyanky.github.io/"
+    }
+}
+```
+
+#### DELETE /musicians/int:musicians_id
+
+- Delete a existing musician.
+- Requires `delete:musicians` permission
+- **Example Response:** 
+
+```
+{
+    "deleted": 3,
+    "musicians": [
+        {
+            "avatar_link": "sjdklfjwioeuro",
+            "e_mail": "1234@ss.com",
+            "genres": "R&B",
+            "id": 1,
+            "introduction": "sdf",
+            "name": "Cyanky",
+            "phone": "123",
+            "songs": [
+                {
+                    "cover_link": "pzxlkcjlvawef",
+                    "genre": null,
+                    "id": 1,
+                    "introduction": "ererere",
+                    "musician_id": 1,
+                    "name": "DIVE",
+                    "song_link": "https://open.spotify.com/track/5w4q9Es264UdYYr2AjnPhU?si=988d1cf25bf24d05"
+                }
+            ],
+            "website": "http://22.com"
+        },
+        {
+            "avatar_link": "jskldfjoeuojsfdjkl",
+            "e_mail": "werpiop@sser.com",
+            "genres": "R&B",
+            "id": 2,
+            "introduction": "She's coming now!",
+            "name": "Jingchen Xie",
+            "phone": "3849302908",
+            "songs": [],
+            "website": "https://cyanky.github.io/"
+        }
+    ],
+    "success": true,
+    "total_musicians": 2
+}
+```
+
+#### DELETE /songs/int:songs_id
+
+- Delete a existing song.
+- Requires `delete:songs` permission
+- **Example Response:** 
+
+```
+{
+    "deleted": 3,
+    "songs": [
+        {
+            "cover_link": "pzxlkcjlvawef",
+            "genre": null,
+            "id": 1,
+            "introduction": "ererere",
+            "musician_id": 1,
+            "name": "DIVE",
+            "song_link": "https://open.spotify.com/track/5w4q9Es264UdYYr2AjnPhU?si=988d1cf25bf24d05"
+        }
+    ],
+    "success": true,
+    "total_songs": 1
+}
+```
+
