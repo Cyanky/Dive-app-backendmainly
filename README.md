@@ -198,6 +198,35 @@ The API will return three error types when requests fail:
 - 404: Resource Not Found
 - 422: Not Processable
 
+### Unittest Example
+```
+ #  Test routes with method ['PATCHE''DELETE']
+    # ------------------------------------------------------------
+
+    def test_update_song_for_Song_Producer(self):
+        header_obj = {
+            "Authorization": self.auth_headers["Song Producer"]
+        }
+        res = self.client().patch("/songs/5", json={"cover_link":"sjkdlfjlkjwoeiur"}, headers=header_obj)
+        data = json.loads(res.data)
+        song = Song.query.filter(Song.id == 5).one_or_none()
+
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(data["success"], True)
+        self.assertEqual(song.format()["cover_link"], "sjkdlfjlkjwoeiur")
+
+    def test_400_for_failed_update_song(self):
+        header_obj = {
+            "Authorization": self.auth_headers["Song Producer"]
+        }
+        res = self.client().patch("/songs/5", headers=header_obj)
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 400)
+        self.assertEqual(data["success"], False)
+        self.assertEqual(data["message"], "bad request")
+```
+
 ### Endpoints
 
 *** Postman is recommended to be used to check these endpoints
